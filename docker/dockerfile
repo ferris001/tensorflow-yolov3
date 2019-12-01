@@ -1,0 +1,7 @@
+# Use tensorflow/tensorflow as a parent image
+# build command:    docker build --rm -f dockerfile -t "tensorflow-yolo3:latest" .
+# run command:      docker run -u $(id -u):$(id -g) -it --rm -v ${PWD}/:/tensorflow-yolo3 -w /tensorflow-yolo3 tensorflow-yolo3:latest
+FROM tensorflow/tensorflow:1.15.0-py3
+
+COPY requirements.txt /
+RUN pip install --upgrade pip && pip install -r /requirements.txt
